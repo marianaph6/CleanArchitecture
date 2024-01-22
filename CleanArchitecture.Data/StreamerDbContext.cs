@@ -7,11 +7,11 @@ namespace CleanArchitecture.Data
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Data Source=localhost\sqlexpress;
+            optionsBuilder.UseSqlServer(@"Data Source=localhost;
                                         Initial Catalog=Streamer; Integrated Security=True");
         }
         public DbSet<Streamer>? Streamers { get; set; }
 
-        public DbSet<Video>? Videoa { get; set; }
+        public DbSet<Video>? Videos { get; set; }
     }
 }
