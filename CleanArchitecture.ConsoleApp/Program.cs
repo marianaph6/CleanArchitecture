@@ -7,7 +7,8 @@ StreamerDbContext dbContext = new();
 
 //await AddNewRecords();
 //QueryStreaming();
-await QueryFilter();
+//await QueryFilter();
+await QueryMethods();
 
 #if DEBUG
     Console.WriteLine("Press enter to close...");
@@ -88,4 +89,21 @@ async Task AddNewRecords()
     await dbContext.AddRangeAsync(movies);
 
     await dbContext.SaveChangesAsync();
+}
+
+async Task QueryMethods()
+{
+    var streamer = dbContext!.Streamers!;
+
+    //El resultado puede ser una lista y luego selecciona el primer valor 
+    var streamerFirstAsync = await streamer.Where(x => x.Nombre.Contains("a")).FirstAsync();
+    var streamersFirstOrDefaultAsync = streamer.Where(x => x.Nombre.Contains("a")).FirstOrDefaultAsync();
+    var streamersFirstOrDefaultAsyncV2 = streamer.FirstOrDefaultAsync(x => x.Nombre.Contains("a"));
+
+    //En la consulta el resultado es solo un valor
+    var singleAsync = streamer.Where(x => x.Id == 1).SingleAsync();
+    var singleOrDefaultAsync = streamer.Where(x=> x.Id == 2).SingleOrDefaultAsync();
+
+    //Buscar por la primary Key (Id)
+    var resultado = streamer.FindAsync(1);
 }
