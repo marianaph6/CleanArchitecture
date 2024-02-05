@@ -19,5 +19,10 @@
         /// Url
         /// </summary>
         public string? Url { get; set; }
+
+        /// <summary>
+        /// Videos
+        /// </summary>
+        public List<Video>? Videos { get; set; }     
     }
 }
