@@ -6,9 +6,14 @@ StreamerDbContext dbContext = new();
 
 
 //await AddNewRecords();
+
 //QueryStreaming();
+
 //await QueryFilter();
-await QueryMethods();
+
+//await QueryMethods();
+
+await QueryLinq();
 
 #if DEBUG
     Console.WriteLine("Press enter to close...");
@@ -106,4 +111,20 @@ async Task QueryMethods()
 
     //Buscar por la primary Key (Id)
     var resultado = streamer.FindAsync(1);
+}
+
+
+async Task QueryLinq()
+{
+    Console.WriteLine($"Ingrese el servicio de Streaming");
+    string streamerNombre = Console.ReadLine();
+    // i representa la data de los campos de la columna de la entidad
+    var streamers =  await (from i in dbContext.Streamers
+                            where EF.Functions.Like(i.Nombre, $"%{streamerNombre}%")
+                            select i).ToListAsync();  // --> Retornar todos los records de la tabla streamers
+
+    foreach(var streamer in streamers)
+    {
+        Console.WriteLine($"{streamer.Id} -- {streamer.Nombre}");
+    }
 }
