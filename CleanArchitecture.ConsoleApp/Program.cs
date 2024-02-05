@@ -5,15 +5,17 @@ using Microsoft.EntityFrameworkCore;
 StreamerDbContext dbContext = new();
 
 
-//await AddNewRecords();
+// await AddNewRecords();
 
-//QueryStreaming();
+// QueryStreaming();
 
-//await QueryFilter();
+// await QueryFilter();
 
-//await QueryMethods();
+// await QueryMethods();
 
-await QueryLinq();
+// await QueryLinq();
+
+await TrackingAndNotTracking();
 
 #if DEBUG
     Console.WriteLine("Press enter to close...");
@@ -128,3 +130,20 @@ async Task QueryLinq()
         Console.WriteLine($"{streamer.Id} -- {streamer.Nombre}");
     }
 }
+
+
+async Task TrackingAndNotTracking()
+{
+    var streamerWithTracking = await dbContext!.Streamers!.FirstOrDefaultAsync(x=> x.Id == 4);
+    var streamerWithNotTracking = await dbContext!.Streamers!.AsNoTracking().FirstOrDefaultAsync(x => x.Id == 5);
+
+    // No se puede utilizar el NoTracking cuando se utilice el FindAsync()
+    // Si se utiliza el no tracking libera el objeto de la memoria temporal por lo cual no se podria utilizar
+
+    streamerWithTracking.Nombre = "Netflix Super";
+    streamerWithNotTracking.Nombre = "Amazon Plus";
+
+
+    dbContext.SaveChangesAsync();
+}
+
