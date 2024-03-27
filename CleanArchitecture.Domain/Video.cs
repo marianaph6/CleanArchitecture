@@ -1,15 +1,19 @@
-﻿namespace CleanArchitecture.Domain
+﻿using CleanArchitecture.Domain.Common;
+
+namespace CleanArchitecture.Domain
 {
     /// <summary>
     /// Video Class
     /// </summary>
-    public class Video
+    public class Video: BaseDomainModel
     {
         /// <summary>
-        /// Id
+        /// Se inicializa la coleccion de actores dentro de Video
         /// </summary>
-        public int Id { get; set; }
-
+        public Video()
+        {
+            Actores = new HashSet<Actor>();
+        }
         /// <summary>
         /// Nombre
         /// </summary>
@@ -25,5 +29,7 @@
         /// </summary>
         public virtual Streamer? Streamer { get; set; } 
         //virtual --> Indicando que puede ser sobreescrito por una clase derivada en el futuro
+
+        public virtual ICollection<Actor> Actores { get; set; }
     }
 }
