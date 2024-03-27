@@ -22,6 +22,14 @@ namespace CleanArchitecture.Data
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Restrict);
 
+
+            modelBuilder.Entity<Video>()
+                .HasMany(p => p.Actores) //Muchas instancias de la clase actores
+                .WithMany(t => t.Videos)
+                .UsingEntity<VideoActor>(
+                    pt => pt.HasKey(e => new { e.ActorId, e.VideoId })
+                ); //Entidad utilizada para la relación
+
         }
         public DbSet<Streamer>? Streamers { get; set; }
 

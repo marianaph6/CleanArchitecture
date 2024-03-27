@@ -1,14 +1,12 @@
-﻿namespace CleanArchitecture.Domain
+﻿using CleanArchitecture.Domain.Common;
+
+namespace CleanArchitecture.Domain
 {
     /// <summary>
     /// Streamer Class
     /// </summary>
-    public class Streamer
+    public class Streamer: BaseDomainModel
     {
-        /// <summary>
-        /// Id
-        /// </summary>
-        public int Id { get; set; }
 
         /// <summary>
         /// Nombre
