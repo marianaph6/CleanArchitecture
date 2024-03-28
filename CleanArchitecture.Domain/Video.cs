@@ -31,5 +31,10 @@ namespace CleanArchitecture.Domain
         //virtual --> Indicando que puede ser sobreescrito por una clase derivada en el futuro
 
         public virtual ICollection<Actor> Actores { get; set; }
+
+        /// <summary>
+        /// Director --> Definición de relación de uno a uno entre Director y Video
+        /// </summary>
+        public virtual Director Director { get; set; }
     }
 }
