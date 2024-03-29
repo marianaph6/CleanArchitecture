@@ -15,7 +15,11 @@ StreamerDbContext dbContext = new();
 
 // await QueryLinq();
 
-await TrackingAndNotTracking();
+//await TrackingAndNotTracking();
+
+//await AddNewStreamerWithVideo();
+
+await AddNewStreamerWithVideoId();
 
 #if DEBUG
     Console.WriteLine("Press enter to close...");
@@ -145,5 +149,40 @@ async Task TrackingAndNotTracking()
 
 
     dbContext.SaveChangesAsync();
+}
+
+async Task AddNewStreamerWithVideo() 
+{
+    // Se hace la insercción (con el objeto Streamer) de un record para una nueva compañia de streaming (pantalla), 
+    // la cual tendrá un nuevo video (hunger games)
+
+    var pantalla = new Streamer
+    {
+        Nombre = "pantalla"
+    };
+
+    var hungerGames = new Video
+    {
+        Nombre = "Hunger Games",
+        Streamer = pantalla,
+    };
+
+    await dbContext.AddAsync(hungerGames);
+    await dbContext.SaveChangesAsync();
+}
+
+async Task AddNewStreamerWithVideoId()
+{
+    // Se hace la insercción (con el IdStreamer ya existente) de un record para una nueva compañia de streaming (pantalla), 
+    // la cual tendrá un nuevo video (hunger games)
+
+    var batmanForever = new Video
+    {
+        Nombre = "Hunger Games",
+        StreamerId = 7,
+    };
+
+    await dbContext.AddAsync(batmanForever);
+    await dbContext.SaveChangesAsync();
 }
 
