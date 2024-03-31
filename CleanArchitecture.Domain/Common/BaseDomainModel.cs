@@ -12,9 +12,9 @@ namespace CleanArchitecture.Domain.Common
         public int Id { get; set; }
 
         /// <summary>
-        /// DateCreated
+        /// CreatedDate
         /// </summary>
-        public DateTime? DateCreated { get; set; }
+        public DateTime? CreatedDate { get; set; }
 
         /// <summary>
         /// CreatedBy
