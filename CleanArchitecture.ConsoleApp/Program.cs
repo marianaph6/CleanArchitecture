@@ -19,7 +19,11 @@ StreamerDbContext dbContext = new();
 
 //await AddNewStreamerWithVideo();
 
-await AddNewStreamerWithVideoId();
+// await AddNewStreamerWithVideoId();
+
+// await AddNewActorWithVideo();
+
+await AddNewDirectorWithVideo();
 
 #if DEBUG
     Console.WriteLine("Press enter to close...");
@@ -184,5 +188,40 @@ async Task AddNewStreamerWithVideoId()
 
     await dbContext.AddAsync(batmanForever);
     await dbContext.SaveChangesAsync();
+}
+
+async Task AddNewActorWithVideo()
+{
+    var actor = new Actor
+    {
+        Nombre = "Brad",
+        Apellido = "Pitt",
+    };
+
+    await dbContext.AddAsync(actor);
+    await dbContext.SaveChangesAsync();
+
+    var videoActor = new VideoActor
+    {
+        ActorId = actor.Id,
+        VideoId = 1
+    };
+
+    await dbContext.AddAsync(videoActor);
+    await dbContext.SaveChangesAsync();
+}
+
+async Task AddNewDirectorWithVideo()
+{
+    var director = new Director
+    {
+        Nombre = "Lorenzo",
+        Apellido = "Pietro",
+        VideoId = 1
+    };
+
+    await dbContext.AddAsync(director);
+    await dbContext.SaveChangesAsync();
+
 }
 
