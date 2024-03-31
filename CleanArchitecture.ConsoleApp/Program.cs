@@ -23,7 +23,9 @@ StreamerDbContext dbContext = new();
 
 // await AddNewActorWithVideo();
 
-await AddNewDirectorWithVideo();
+// await AddNewDirectorWithVideo();
+
+await MultipleEntitiesQuery();
 
 #if DEBUG
     Console.WriteLine("Press enter to close...");
@@ -225,3 +227,33 @@ async Task AddNewDirectorWithVideo()
 
 }
 
+
+async Task MultipleEntitiesQuery()
+{
+
+    // Retornar videos que tengan el Id = 1. Adicional se queiren incluir todos los actores que pertenezcan al video
+
+    //Trae el video con su lista de actores
+
+    //var videoWithActores = await dbContext!.Videos!.Include(q => q.Actores).FirstOrDefaultAsync(q => q.Id ==1);
+
+    //var actor = await dbContext.Actores!.Select(q=> q.Nombre).ToListAsync();
+
+    var videoWithDirector = await dbContext.Videos!
+                            .Where(q => q.Director != null) //Traerá solo las peliculas que tengan un director
+                            .Include(q => q.Director)
+                            .Select(q =>
+                                new
+                                {
+                                    Director_Nombre_Completo = $"{q.Director.Nombre} {q.Director.Apellido}",
+                                    Movie = q.Nombre
+                                }
+                            ).ToListAsync();
+
+    foreach(var pelicula in videoWithDirector)
+    {
+        Console.WriteLine($"{pelicula.Movie}  -- {pelicula.Director_Nombre_Completo}");
+    }
+
+
+}
