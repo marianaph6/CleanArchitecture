@@ -30,7 +30,7 @@ namespace CleanArchitecture.Application.Contracts.Persistence
         /// <param name=""></param>
         /// <returns></returns>
         Task<IReadOnlyList<T>> GetAsync(Expression<Func<T,bool>> predicate = null,
-                                        Func<IQueryable<T>, IOrderedEnumerable<T>> orderBy= null,
+                                        Func<IQueryable<T>, IOrderedQueryable<T>> orderBy= null,
                                         string includeString = null,
                                         bool disableTracking = true);
 
@@ -44,7 +44,7 @@ namespace CleanArchitecture.Application.Contracts.Persistence
         /// <param name="disableTracking"></param>
         /// <returns></returns>
         Task<IReadOnlyList<T>> GetAsync(Expression<Func<T, bool>> predicate = null,
-                                        Func<IQueryable<T>, IOrderedEnumerable<T>> orderBy = null,
+                                        Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
                                         List<Expression<Func<T,object>>> includes = null,
                                         bool disableTracking = true);
 
@@ -75,6 +75,6 @@ namespace CleanArchitecture.Application.Contracts.Persistence
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        Task<T> DeleteAsync(int id);
+        Task DeleteAsync(T entity);
     }
 }
