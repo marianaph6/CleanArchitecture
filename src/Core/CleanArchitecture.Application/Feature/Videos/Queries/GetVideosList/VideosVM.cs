@@ -1,6 +1,6 @@
 ﻿namespace CleanArchitecture.Application.Feature.Videos.Queries.GetVideosList
 {
-    public class VideosVM
+    public class VideosVm
     {
         public string? Nombre { get; set; }
 

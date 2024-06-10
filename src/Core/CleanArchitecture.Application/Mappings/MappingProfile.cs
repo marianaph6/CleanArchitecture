@@ -9,7 +9,7 @@ namespace CleanArchitecture.Application.Mappings
     {
         public MappingProfile()
         {
-            CreateMap<Video, VideosVM>().ReverseMap();
+            CreateMap<Video, VideosVm>().ReverseMap();
             CreateMap<CreateStreamerCommand, Streamer>().ReverseMap();
         }
     }
