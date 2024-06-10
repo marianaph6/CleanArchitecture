@@ -21,6 +21,6 @@ namespace CleanArchitecture.Domain
         /// <summary>
         /// Videos
         /// </summary>
-        public List<Video>? Videos { get; set; }     
+        public ICollection<Video>? Videos { get; set; }     
     }
 }
