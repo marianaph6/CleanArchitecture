@@ -1,6 +1,7 @@
 ﻿using CleanArchitecture.Application.Contracts.Infrastructure;
 using CleanArchitecture.Application.Contracts.Persistence;
 using CleanArchitecture.Application.Models;
+using CleanArchitecture.Infrastucture.Email;
 using CleanArchitecture.Infrastucture.Persistence;
 using CleanArchitecture.Infrastucture.Repository;
 using Microsoft.EntityFrameworkCore;
@@ -20,8 +21,7 @@ namespace CleanArchitecture.Infrastucture
             services.AddScoped<IStreamerRepository, StreamerRepository>();
 
             services.Configure<EmailSettings>(c => configuration.GetSection("EmailSettings"));
-            services.AddTransient<IEmailService, IEmailService>();
-
+            services.AddTransient<IEmailService, EmailService>();
 
             return services;
 
