@@ -117,6 +117,7 @@ namespace CleanArchitecture.Identity.Services
 
             // Algoritmo oKey para acceder a la data
             // Se le pasa como parametro la clave o frase de seguridad
+
             var symmetricSecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes( _jwtSettings.Key));
             var signingCredentials = new SigningCredentials(symmetricSecurityKey, SecurityAlgorithms.HmacSha256);
 
