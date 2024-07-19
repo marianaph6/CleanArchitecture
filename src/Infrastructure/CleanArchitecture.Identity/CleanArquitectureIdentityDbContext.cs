@@ -20,6 +20,23 @@ namespace CleanArchitecture.Identity
             builder.ApplyConfiguration(new RoleConfiguration());
             builder.ApplyConfiguration(new UserConfiguration());
             builder.ApplyConfiguration(new UserRoleConfiguration());
+
+            builder.Entity<ApplicationUser>()
+               .Property(u => u.AccessFailedCount)
+               .HasDefaultValue(0);
+
+            builder.Entity<ApplicationUser>()
+               .Property(u => u.LockoutEnabled)
+               .HasDefaultValue(false);
+
+            builder.Entity<ApplicationUser>()
+               .Property(u => u.PhoneNumberConfirmed)
+               .HasDefaultValue(false);
+
+            builder.Entity<ApplicationUser>()
+               .Property(u => u.TwoFactorEnabled)
+               .HasDefaultValue(false);
+
         }
     }
 }
