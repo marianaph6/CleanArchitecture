@@ -1,29 +1,26 @@
 ﻿using AutoFixture;
 using CleanArchitecture.Domain;
 using CleanArchitecture.Infrastucture.Persistence;
-using CleanArchitecture.Infrastucture.Repository;
-using Microsoft.EntityFrameworkCore;
-using Moq;
 
 namespace CleanArchitecture.Application.UnitTests.Mocks
 {
-    public static class MockVideoRepository
+    public static class MockStreamerRepository
     {
-        public static void AddDataVideoRepository(StreamerDbContext streamerDbContextFake)
+        public static void AddDataStreamerRepository(StreamerDbContext streamerDbContextFake)
         {
             // Crear data de prueba con la libreria Fixture
             var fixture = new Fixture();
             fixture.Behaviors.Add(new OmitOnRecursionBehavior());
 
-            var videos = fixture.CreateMany<Video>().ToList();
-            videos.Add(fixture.Build<Video>()
-                .With(tr => tr.CreatedBy, "System")
+            var streamers = fixture.CreateMany<Streamer>().ToList();
+            streamers.Add(fixture.Build<Streamer>()
+                .With(tr => tr.Id, 8001)
+                .Without(tr => tr.Videos) //Crear el record sin hijos (video)
                 .Create()
                 );
 
-            streamerDbContextFake.Videos!.AddRange(videos);
+            streamerDbContextFake.Streamers!.AddRange(streamers);
             streamerDbContextFake.SaveChanges();
         }
     }
-
 }

@@ -26,6 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Features\Directors\" />
     <Folder Include="Features\Videos\Commands\" />
   </ItemGroup>
 

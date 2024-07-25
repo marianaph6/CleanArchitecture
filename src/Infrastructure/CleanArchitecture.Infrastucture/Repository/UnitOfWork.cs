@@ -24,6 +24,8 @@ namespace CleanArchitecture.Infrastucture.Repository
             _context = context;
         }
 
+        public StreamerDbContext StreamerDbContext => _context;
+
         //Disparar la confirmación de todas las transacciones que se estan realizando
         public async Task<int> Complete()
         {
