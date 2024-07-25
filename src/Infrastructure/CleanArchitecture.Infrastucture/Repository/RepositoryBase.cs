@@ -83,6 +83,7 @@ namespace CleanArchitecture.Infrastucture.Repository
 
         public async Task<T> UpdateAsync(T entity)
         {
+            _context.Set<T>().Attach(entity);
             _context.Entry(entity).State = EntityState.Modified;
             await _context.SaveChangesAsync();
             return entity;
@@ -95,6 +96,21 @@ namespace CleanArchitecture.Infrastucture.Repository
             await _context.SaveChangesAsync();
         }
 
+        // Para los siguientes métodos solo se implementa la funcionalidad(se almacenen en memoria), dado que el saveChangesAsync lo hace el UnitOfWork
+        public void AddEntity(T entity)
+        {
+            _context.Set<T>().Add(entity);
+        }
 
+        public void UpdateEntity(T entity)
+        {
+            _context.Set<T>().Attach(entity);
+            _context.Entry(entity).State = EntityState.Modified;
+        }
+
+        public void DeleteEntity(T entity)
+        {
+            _context.Set<T>().Remove(entity);
+        }
     }
 }

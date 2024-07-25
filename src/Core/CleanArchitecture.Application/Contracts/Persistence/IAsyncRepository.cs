@@ -76,5 +76,11 @@ namespace CleanArchitecture.Application.Contracts.Persistence
         /// <param name="id"></param>
         /// <returns></returns>
         Task DeleteAsync(T entity);
+
+        void AddEntity(T entity);
+
+        void UpdateEntity(T entity);    
+
+        void DeleteEntity(T entity);
     }
 }

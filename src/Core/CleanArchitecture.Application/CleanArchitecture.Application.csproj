@@ -11,6 +11,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Feature\Directors\Commands\DeleteDirector\" />
+    <Folder Include="Feature\Directors\Commands\UpdateDirector\" />
+    <Folder Include="Feature\Directors\Queries\" />
     <Folder Include="Feature\Streamers\Queries\" />
     <Folder Include="Feature\Videos\Commands\" />
   </ItemGroup>
