@@ -6,12 +6,17 @@ namespace CleanArchitecture.Application.Feature.Videos.Queries.GetVideosList
 {
     public class GetVideosListQueryHandler : IRequestHandler<GetVideosListQuery, List<VideosVm>>
     {
-        private readonly IVideoRepository _videoRepository;
+        //private readonly IVideoRepository _videoRepository;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
-        public GetVideosListQueryHandler(IVideoRepository videoRepository, IMapper mapper)
+        public GetVideosListQueryHandler(
+            //IVideoRepository videoRepository,
+            IUnitOfWork unitOfWork,
+            IMapper mapper)
         {
-            _videoRepository = videoRepository;
+            //_videoRepository = videoRepository;
+            _unitOfWork = unitOfWork;
             _mapper = mapper;     
         }
 
@@ -24,7 +29,9 @@ namespace CleanArchitecture.Application.Feature.Videos.Queries.GetVideosList
         /// <exception cref="NotImplementedException"></exception>
         public async Task<List<VideosVm>> Handle(GetVideosListQuery request, CancellationToken cancellationToken)
         {
-            var videoList =  await _videoRepository.GetVideoByUserName(request._userName);
+            //var videoList =  await _videoRepository.GetVideoByUserName(request._userName);
+
+            var videoList = await _unitOfWork.VideoRepository.GetVideoByUserName(request._userName);
 
             return _mapper.Map<List<VideosVm>>(videoList);  
         }
