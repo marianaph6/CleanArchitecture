@@ -8,5 +8,8 @@ namespace CleanArchitecture.Application.Contracts.Persistence
 
         //Saber cuando una transacción ha terminado
         Task<int> Complete();
+
+        IStreamerRepository StreamerRepository {  get; }
+        IVideoRepository VideoRepository { get; }
     }
 }
