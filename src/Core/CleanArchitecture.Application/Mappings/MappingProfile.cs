@@ -7,14 +7,14 @@ using CleanArchitecture.Domain;
 
 namespace CleanArchitecture.Application.Mappings
 {
-    public class MappingProfile: Profile
+    public class MappingProfile : Profile
     {
         public MappingProfile()
         {
             CreateMap<Video, VideosVm>().ReverseMap();
             CreateMap<CreateStreamerCommand, Streamer>().ReverseMap();
             CreateMap<CreateDirectorCommand, Director>().ReverseMap();
-            CreateMap<UpdateStreamerCommand, Streamer>().ReverseMap();  
+            CreateMap<UpdateStreamerCommand, Streamer>().ReverseMap();
         }
     }
 }

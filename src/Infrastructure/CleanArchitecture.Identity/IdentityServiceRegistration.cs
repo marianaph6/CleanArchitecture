@@ -20,19 +20,20 @@ namespace CleanArchitecture.Identity
 
             services.AddDbContext<CleanArquitectureIdentityDbContext>(
                 options => options.UseSqlServer(configuration.GetConnectionString("IdentityConnectionString"),
-                b => b.MigrationsAssembly(typeof(CleanArquitectureIdentityDbContext).Assembly.FullName))  
+                b => b.MigrationsAssembly(typeof(CleanArquitectureIdentityDbContext).Assembly.FullName))
             );
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<CleanArquitectureIdentityDbContext>()
                 .AddDefaultTokenProviders();
 
-            services.AddTransient<IAuthService,AuthService>();
+            services.AddTransient<IAuthService, AuthService>();
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            }).AddJwtBearer(options => {
+            }).AddJwtBearer(options =>
+            {
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuerSigningKey = true,
@@ -43,7 +44,6 @@ namespace CleanArchitecture.Identity
                     ValidIssuer = configuration["JwtSettings:Issuer"],
                     ValidAudience = configuration["JwtSettings:Audience"],
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JwtSettings:Key"]))
-
                 };
             });
 

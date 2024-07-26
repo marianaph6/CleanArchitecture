@@ -5,9 +5,8 @@ namespace CleanArchitecture.Domain
     /// <summary>
     /// Streamer Class
     /// </summary>
-    public class Streamer: BaseDomainModel
+    public class Streamer : BaseDomainModel
     {
-
         /// <summary>
         /// Nombre
         /// </summary>
@@ -21,6 +20,6 @@ namespace CleanArchitecture.Domain
         /// <summary>
         /// Videos
         /// </summary>
-        public ICollection<Video>? Videos { get; set; }     
+        public ICollection<Video>? Videos { get; set; }
     }
 }

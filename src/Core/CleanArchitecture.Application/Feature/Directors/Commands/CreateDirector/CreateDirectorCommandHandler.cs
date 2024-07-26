@@ -7,7 +7,7 @@ using Microsoft.Extensions.Logging;
 namespace CleanArchitecture.Application.Feature.Directors.Commands.CreateDirector
 {
     public class CreateDirectorCommandHandler : IRequestHandler<CreateDirectorCommand, int>
-    { 
+    {
         private readonly ILogger<CreateDirectorCommandHandler> _logger;
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
@@ -24,8 +24,8 @@ namespace CleanArchitecture.Application.Feature.Directors.Commands.CreateDirecto
             var directorEntity = _mapper.Map<Director>(request);
             _unitOfWork.Repository<Director>().AddEntity(directorEntity);
             var result = await _unitOfWork.Complete();
-            
-            if(result <= 0)
+
+            if (result <= 0)
             {
                 _logger.LogError("No se intertó el record del director");
                 throw new Exception("No se pudo insertar el record del director");

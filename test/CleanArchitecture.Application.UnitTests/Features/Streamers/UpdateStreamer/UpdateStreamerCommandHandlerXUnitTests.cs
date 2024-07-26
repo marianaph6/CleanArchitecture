@@ -19,7 +19,6 @@ namespace CleanArchitecture.Application.UnitTests.Features.Streamers.UpdateStrea
         private readonly Mock<IEmailService> _mailService;
         private readonly Mock<ILogger<UpdateStreamerCommandHandler>> _logger;
 
-
         public UpdateStreamerCommandHandlerXUnitTests()
         {
             _unitOfWork = MockUnitOfWork.GetUnitOfWork();

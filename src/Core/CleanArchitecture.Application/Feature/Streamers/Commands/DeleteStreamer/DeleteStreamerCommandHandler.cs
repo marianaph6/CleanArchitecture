@@ -1,6 +1,4 @@
-﻿
-
-using AutoMapper;
+﻿using AutoMapper;
 using CleanArchitecture.Application.Contracts.Persistence;
 using CleanArchitecture.Application.Exceptions;
 using CleanArchitecture.Domain;
@@ -13,11 +11,12 @@ namespace CleanArchitecture.Application.Feature.Streamers.Commands.DeleteStreame
     {
         //private readonly IStreamerRepository _streamerRepository;
         private readonly IUnitOfWork _unitOfWork;
+
         private readonly IMapper _mapper;
         private readonly ILogger<DeleteStreamerCommandHandler> _logger;
 
         public DeleteStreamerCommandHandler(
-            //IStreamerRepository streamerRepository, 
+            //IStreamerRepository streamerRepository,
             IUnitOfWork unitOfWork,
             IMapper mapper, ILogger<DeleteStreamerCommandHandler> logger)
         {
@@ -35,13 +34,12 @@ namespace CleanArchitecture.Application.Feature.Streamers.Commands.DeleteStreame
             if (streamerToDelete == null)
             {
                 _logger.LogError($"{request.Id} streamer no existe en el sistema");
-                throw new NotFoundException(nameof(Streamer),request.Id);
+                throw new NotFoundException(nameof(Streamer), request.Id);
             }
 
             //await _streamerRepository.DeleteAsync(streamerToDelete);
             _unitOfWork.StreamerRepository.DeleteEntity(streamerToDelete);
             await _unitOfWork.Complete();
-
 
             _logger.LogInformation($"El {request.Id} streamer fué eliminado con exito del sistema");
 

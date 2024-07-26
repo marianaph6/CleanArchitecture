@@ -4,11 +4,10 @@ using CleanArchitecture.Infrastucture.Persistence;
 
 namespace CleanArchitecture.Infrastucture.Repository
 {
-    public class StreamerRepository: RepositoryBase<Streamer>, IStreamerRepository
+    public class StreamerRepository : RepositoryBase<Streamer>, IStreamerRepository
     {
-        public StreamerRepository(StreamerDbContext context): base(context)
+        public StreamerRepository(StreamerDbContext context) : base(context)
         {
- 
         }
     }
 }

@@ -37,12 +37,11 @@ namespace CleanArchitecture.API.Controllers
             return NoContent();
         }
 
-
         [HttpDelete(Name = "DeleteStreamer")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesDefaultResponseType] 
-        public async Task<IActionResult> DeleteStreamer (int id)
+        [ProducesDefaultResponseType]
+        public async Task<IActionResult> DeleteStreamer(int id)
         {
             var command = new DeleteStreamerCommand
             {

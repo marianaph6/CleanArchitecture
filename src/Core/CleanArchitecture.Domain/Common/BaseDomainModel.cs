@@ -1,5 +1,4 @@
-﻿
-namespace CleanArchitecture.Domain.Common
+﻿namespace CleanArchitecture.Domain.Common
 {
     /// <summary>
     /// BaseDomainModel Class

@@ -13,15 +13,13 @@ namespace CleanArchitecture.Infrastucture.Persistence
         /// <returns></returns>
         public static async Task SeedAsync(StreamerDbContext context, ILogger<StreamerDbContextSeed> logger)
         {
-
-            if(context.Streamers!.Any())
+            if (context.Streamers!.Any())
             {
                 context.Streamers!.AddRange(GetPreconfiguredStreamer());
                 await context.SaveChangesAsync();
                 logger.LogInformation("Estamos insertando nuevos records al db {context}", typeof(StreamerDbContextSeed).Name);
             }
         }
-
 
         private static IEnumerable<Streamer> GetPreconfiguredStreamer()
         {
@@ -32,14 +30,12 @@ namespace CleanArchitecture.Infrastucture.Persistence
                     CreatedBy = "marianamph6",
                     Nombre = "Maxi HBP",
                     Url = "https://es.wikipedia.org/wiki/Sitio_web"
-
                 },
                 new()
                 {
                     CreatedBy = "marianamph6",
                     Nombre = "Amazon VIP",
                     Url = "https://es.wix.com/blog"
-
                 }
             };
         }

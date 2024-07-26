@@ -2,7 +2,7 @@
 
 namespace CleanArchitecture.Application.Feature.Streamers.Commands.UpdateStreamer
 {
-    public class UpdateStreamerCommand: IRequest
+    public class UpdateStreamerCommand : IRequest
     {
         public int Id { get; set; }
 

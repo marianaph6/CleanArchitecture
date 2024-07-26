@@ -11,6 +11,7 @@ namespace CleanArchitecture.Application.Feature.Streamers.Commands.UpdateStreame
     {
         //private readonly IStreamerRepository _streamerRepository;
         private readonly IMapper _mapper;
+
         private readonly ILogger<UpdateStreamerCommandHandler> _logger;
         private readonly IUnitOfWork _unitOfWork;
 
@@ -22,7 +23,7 @@ namespace CleanArchitecture.Application.Feature.Streamers.Commands.UpdateStreame
             //_streamerRepository = streamerRepository;
             _mapper = mapper;
             _logger = logger;
-            _unitOfWork = unitOfWork;   
+            _unitOfWork = unitOfWork;
         }
 
         public async Task<Unit> Handle(UpdateStreamerCommand request, CancellationToken cancellationToken)
@@ -33,10 +34,10 @@ namespace CleanArchitecture.Application.Feature.Streamers.Commands.UpdateStreame
             if (streamerToUpdate == null)
             {
                 _logger.LogError($"No se encontró el Streamer id: {request.Id}");
-                throw new NotFoundException(nameof(Streamer),request.Id);
+                throw new NotFoundException(nameof(Streamer), request.Id);
             }
 
-            _mapper.Map(request,streamerToUpdate, typeof(UpdateStreamerCommand),typeof(Streamer));
+            _mapper.Map(request, streamerToUpdate, typeof(UpdateStreamerCommand), typeof(Streamer));
 
             //await _streamerRepository.UpdateAsync(streamerToUpdate);
             _unitOfWork.StreamerRepository.UpdateEntity(streamerToUpdate);

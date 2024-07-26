@@ -2,7 +2,7 @@
 
 namespace CleanArchitecture.Application.Feature.Directors.Commands.CreateDirector
 {
-    public class CreateDirectorCommand: IRequest<int>
+    public class CreateDirectorCommand : IRequest<int>
     {
         /// <summary>
         /// Nombre
@@ -13,7 +13,6 @@ namespace CleanArchitecture.Application.Feature.Directors.Commands.CreateDirecto
         /// Apellido
         /// </summary>
         public string Apellido { get; set; } = string.Empty;
-
 
         /// <summary>
         /// VideoId --> Referencia hacia la clase Video

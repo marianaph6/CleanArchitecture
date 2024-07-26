@@ -8,6 +8,7 @@ namespace CleanArchitecture.Application.Feature.Videos.Queries.GetVideosList
     {
         //private readonly IVideoRepository _videoRepository;
         private readonly IUnitOfWork _unitOfWork;
+
         private readonly IMapper _mapper;
 
         public GetVideosListQueryHandler(
@@ -17,7 +18,7 @@ namespace CleanArchitecture.Application.Feature.Videos.Queries.GetVideosList
         {
             //_videoRepository = videoRepository;
             _unitOfWork = unitOfWork;
-            _mapper = mapper;     
+            _mapper = mapper;
         }
 
         /// <summary>
@@ -33,7 +34,7 @@ namespace CleanArchitecture.Application.Feature.Videos.Queries.GetVideosList
 
             var videoList = await _unitOfWork.VideoRepository.GetVideoByUserName(request._userName);
 
-            return _mapper.Map<List<VideosVm>>(videoList);  
+            return _mapper.Map<List<VideosVm>>(videoList);
         }
     }
 }

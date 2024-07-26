@@ -33,10 +33,10 @@ namespace CleanArchitecture.Infrastucture.Email
                 Name = _emailSettings.FromName
             };
 
-            var sendGridMessage = MailHelper.CreateSingleEmail(from, to, subject, emailBody,emailBody);
-            var responde =  await client.SendEmailAsync(sendGridMessage);
+            var sendGridMessage = MailHelper.CreateSingleEmail(from, to, subject, emailBody, emailBody);
+            var responde = await client.SendEmailAsync(sendGridMessage);
 
-            if(responde.StatusCode == System.Net.HttpStatusCode.Accepted || responde.StatusCode == System.Net.HttpStatusCode.OK)
+            if (responde.StatusCode == System.Net.HttpStatusCode.Accepted || responde.StatusCode == System.Net.HttpStatusCode.OK)
             {
                 return true;
             }

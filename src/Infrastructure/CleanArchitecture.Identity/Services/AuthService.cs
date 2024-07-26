@@ -28,7 +28,7 @@ namespace CleanArchitecture.Identity.Services
         {
             var user = await _userManager.FindByEmailAsync(request.Email) ?? throw new Exception($"El usuario con Email {request.Email} no existe");
 
-            var result = await _signInManager.PasswordSignInAsync(user.UserName, request.Password,false,lockoutOnFailure:false);
+            var result = await _signInManager.PasswordSignInAsync(user.UserName, request.Password, false, lockoutOnFailure: false);
 
             if (!result.Succeeded)
             {
@@ -52,14 +52,14 @@ namespace CleanArchitecture.Identity.Services
         {
             var existingUser = await _userManager.FindByNameAsync(request.Username);
 
-            if(existingUser != null)
+            if (existingUser != null)
             {
                 throw new Exception("El username ya fué tomado por otra cuenta");
             }
 
             var existingEmail = await _userManager.FindByEmailAsync(request.Email);
 
-            if(existingEmail != null)
+            if (existingEmail != null)
             {
                 throw new Exception("El email ya fué tomado por otra cuenta");
             }
@@ -71,10 +71,9 @@ namespace CleanArchitecture.Identity.Services
                 Apellidos = request.Apellidos,
                 UserName = request.Username,
                 EmailConfirmed = true,
-
             };
 
-            var result = await _userManager.CreateAsync(user,request.Password);
+            var result = await _userManager.CreateAsync(user, request.Password);
 
             if (result.Succeeded)
             {
@@ -99,7 +98,7 @@ namespace CleanArchitecture.Identity.Services
             var roles = await _userManager.GetRolesAsync(user);
 
             List<Claim> roleClaims = new();
-            
+
             foreach (var role in roles)
             {
                 roleClaims.Add(new Claim(ClaimTypes.Role, role));
@@ -118,7 +117,7 @@ namespace CleanArchitecture.Identity.Services
             // Algoritmo oKey para acceder a la data
             // Se le pasa como parametro la clave o frase de seguridad
 
-            var symmetricSecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes( _jwtSettings.Key));
+            var symmetricSecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Key));
             var signingCredentials = new SigningCredentials(symmetricSecurityKey, SecurityAlgorithms.HmacSha256);
 
             var jwtSecurityToken = new JwtSecurityToken(

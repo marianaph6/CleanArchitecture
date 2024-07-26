@@ -13,11 +13,11 @@ namespace CleanArchitecture.Infrastucture.Repository
         private IVideoRepository _videoRepository;
         private IStreamerRepository _streamerRepository;
 
-        //Inyección via propiedades 
+        //Inyección via propiedades
         // ??= --> Que no sea nulo
         public IVideoRepository VideoRepository => _videoRepository ??= new VideoRepository(_context);
-        public IStreamerRepository StreamerRepository => _streamerRepository ??= new StreamerRepository(_context);
 
+        public IStreamerRepository StreamerRepository => _streamerRepository ??= new StreamerRepository(_context);
 
         public UnitOfWork(StreamerDbContext context)
         {
@@ -38,20 +38,19 @@ namespace CleanArchitecture.Infrastucture.Repository
             _context.Dispose();
         }
 
-
         // Instancia del respositorio
         public IAsyncRepository<TEntity> Repository<TEntity>() where TEntity : BaseDomainModel
         {
-            if(_repositories == null)
+            if (_repositories == null)
             {
                 _repositories = new Hashtable(); //Crea la colección
             }
             var type = typeof(TEntity).Name; //Obtener el nombre de la entidad
 
-            if(!_repositories.ContainsKey(type)) //Validar si no existe la entidad para crearla
+            if (!_repositories.ContainsKey(type)) //Validar si no existe la entidad para crearla
             {
                 var repositoryType = typeof(RepositoryBase<>);
-                var repositoryInstance = Activator.CreateInstance(repositoryType.MakeGenericType(typeof(TEntity)),_context);
+                var repositoryInstance = Activator.CreateInstance(repositoryType.MakeGenericType(typeof(TEntity)), _context);
                 _repositories.Add(type, repositoryInstance);
             }
 

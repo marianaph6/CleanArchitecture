@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using CleanArchitecture.Application.Contracts.Infrastructure;
 using CleanArchitecture.Application.Feature.Streamers.Commands.DeleteStreamer;
-using CleanArchitecture.Application.Feature.Streamers.Commands.UpdateStreamer;
 using CleanArchitecture.Application.Mappings;
 using CleanArchitecture.Application.UnitTests.Mocks;
 using CleanArchitecture.Infrastucture.Repository;
@@ -51,6 +50,5 @@ namespace CleanArchitecture.Application.UnitTests.Features.Streamers.DeleteStrea
             //Assert
             result.ShouldBeOfType<Unit>();
         }
-
     }
 }

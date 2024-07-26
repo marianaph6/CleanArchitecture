@@ -24,6 +24,5 @@ namespace CleanArchitecture.API.Controllers
         {
             return await _mediator.Send(createDirectorCommand);
         }
-
     }
 }

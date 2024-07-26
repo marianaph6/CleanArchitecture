@@ -9,9 +9,7 @@ namespace CleanArchitecture.Identity
     {
         public CleanArquitectureIdentityDbContext(DbContextOptions<CleanArquitectureIdentityDbContext> options) : base(options)
         {
-            
         }
-
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -36,7 +34,6 @@ namespace CleanArchitecture.Identity
             builder.Entity<ApplicationUser>()
                .Property(u => u.TwoFactorEnabled)
                .HasDefaultValue(false);
-
         }
     }
 }

@@ -1,11 +1,9 @@
-
-using CleanArchitecture.Infrastucture;
+using AutoMapper.Data;
+using CleanArchitecture.API.Middleware;
 using CleanArchitecture.Application;
 using CleanArchitecture.Application.Mappings;
-using AutoMapper.Data;
 using CleanArchitecture.Identity;
-using CleanArchitecture.API.Middleware;
-
+using CleanArchitecture.Infrastucture;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,11 +16,11 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddInfrastructureServices(builder.Configuration);
 builder.Services.AddApplicationServices();
-builder.Services.ConfigurationIdentityServices(builder.Configuration);  
+builder.Services.ConfigurationIdentityServices(builder.Configuration);
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("CorsPolicy",builder => builder.
+    options.AddPolicy("CorsPolicy", builder => builder.
     AllowAnyOrigin().
     AllowAnyMethod().
     AllowAnyHeader());

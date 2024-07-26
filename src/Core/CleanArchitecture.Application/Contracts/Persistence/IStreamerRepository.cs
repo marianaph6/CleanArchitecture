@@ -1,9 +1,8 @@
-﻿
-using CleanArchitecture.Domain;
+﻿using CleanArchitecture.Domain;
 
 namespace CleanArchitecture.Application.Contracts.Persistence
 {
-    public interface IStreamerRepository: IAsyncRepository<Streamer>
+    public interface IStreamerRepository : IAsyncRepository<Streamer>
     {
     }
 }

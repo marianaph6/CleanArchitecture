@@ -1,5 +1,4 @@
-﻿using CleanArchitecture.Domain;
-using MediatR;
+﻿using MediatR;
 
 namespace CleanArchitecture.Application.Feature.Streamers.Commands.CreateStreamer
 {
@@ -14,7 +13,5 @@ namespace CleanArchitecture.Application.Feature.Streamers.Commands.CreateStreame
         /// Url
         /// </summary>
         public string Url { get; set; } = string.Empty;
-
-
     }
 }

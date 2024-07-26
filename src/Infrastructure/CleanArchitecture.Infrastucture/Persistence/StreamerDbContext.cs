@@ -6,9 +6,8 @@ namespace CleanArchitecture.Infrastucture.Persistence
 {
     public class StreamerDbContext : DbContext
     {
-        public StreamerDbContext(DbContextOptions<StreamerDbContext> options): base (options)
+        public StreamerDbContext(DbContextOptions<StreamerDbContext> options) : base(options)
         {
-            
         }
 
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -21,7 +20,7 @@ namespace CleanArchitecture.Infrastucture.Persistence
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
-            foreach(var entry in ChangeTracker.Entries<BaseDomainModel>() )
+            foreach (var entry in ChangeTracker.Entries<BaseDomainModel>())
             {
                 switch (entry.State)
                 {
@@ -29,6 +28,7 @@ namespace CleanArchitecture.Infrastucture.Persistence
                         entry.Entity.CreatedDate = DateTime.Now;
                         entry.Entity.CreatedBy = "System";
                         break;
+
                     case EntityState.Modified:
                         entry.Entity.LastModifiedDate = DateTime.Now;
                         entry.Entity.LastModifiedBy = "System";
@@ -37,7 +37,6 @@ namespace CleanArchitecture.Infrastucture.Persistence
             }
 
             return base.SaveChangesAsync(cancellationToken);
-
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -49,15 +48,14 @@ namespace CleanArchitecture.Infrastucture.Persistence
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Restrict);
 
-
             modelBuilder.Entity<Video>()
                 .HasMany(p => p.Actores) //Muchas instancias de la clase actores
                 .WithMany(t => t.Videos)
                 .UsingEntity<VideoActor>(
                     pt => pt.HasKey(e => new { e.ActorId, e.VideoId })
                 ); //Entidad utilizada para la relación
-
         }
+
         public DbSet<Streamer>? Streamers { get; set; }
 
         public DbSet<Video>? Videos { get; set; }

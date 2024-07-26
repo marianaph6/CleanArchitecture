@@ -1,9 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using System.ComponentModel.DataAnnotations;
 
 namespace CleanArchitecture.Identity.Models
 {
-    public class ApplicationUser: IdentityUser
+    public class ApplicationUser : IdentityUser
     {
         public string Nombre { get; set; } = string.Empty;
         public string Apellidos { get; set; } = string.Empty;
@@ -11,6 +10,6 @@ namespace CleanArchitecture.Identity.Models
         public bool LockoutEnabled { get; set; } = false;
         public bool PhoneNumberConfirmed { get; set; } = false;
 
-        public bool TwoFactorEnabled { get; set; } = false; 
+        public bool TwoFactorEnabled { get; set; } = false;
     }
 }

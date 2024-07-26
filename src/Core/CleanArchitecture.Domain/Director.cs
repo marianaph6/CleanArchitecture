@@ -1,12 +1,11 @@
-﻿
-using CleanArchitecture.Domain.Common;
+﻿using CleanArchitecture.Domain.Common;
 
 namespace CleanArchitecture.Domain
 {
     /// <summary>
     /// Director Class
     /// </summary>
-    public class Director: BaseDomainModel
+    public class Director : BaseDomainModel
     {
         /// <summary>
         /// Nombre
@@ -17,7 +16,6 @@ namespace CleanArchitecture.Domain
         /// Apellido
         /// </summary>
         public string? Apellido { get; set; }
-
 
         /// <summary>
         /// VideoId --> Referencia hacia la clase Video

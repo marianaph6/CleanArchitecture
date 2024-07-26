@@ -18,7 +18,6 @@ namespace CleanArchitecture.Application.UnitTests.Features.Streamers.CreateStrea
         private readonly Mock<IEmailService> _mailService;
         private readonly Mock<ILogger<CreateStreamerCommandHandler>> _logger;
 
-
         public CreateStreamerCommandHandlerXUnitTests()
         {
             _unitOfWork = MockUnitOfWork.GetUnitOfWork();
@@ -43,12 +42,10 @@ namespace CleanArchitecture.Application.UnitTests.Features.Streamers.CreateStrea
                 Url = "PruebaStreamer.com"
             };
 
-            var handler = new CreateStreamerCommandHandler(_unitOfWork.Object,_mapper,_mailService.Object,_logger.Object);
+            var handler = new CreateStreamerCommandHandler(_unitOfWork.Object, _mapper, _mailService.Object, _logger.Object);
             var result = await handler.Handle(streamerInput, CancellationToken.None);
 
             result.ShouldBeOfType<int>();
         }
     }
-
-    
 }

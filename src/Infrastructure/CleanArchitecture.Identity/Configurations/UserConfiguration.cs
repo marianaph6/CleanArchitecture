@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System.ComponentModel.DataAnnotations;
 
 namespace CleanArchitecture.Identity.Configurations
 {
@@ -24,7 +23,6 @@ namespace CleanArchitecture.Identity.Configurations
                     NormalizedUserName = "mariana1996.mph",
                     PasswordHash = hasher.HashPassword(null, "mariana1996mph*"),
                     EmailConfirmed = true
-
                 },
                 new
                 {
@@ -37,7 +35,6 @@ namespace CleanArchitecture.Identity.Configurations
                     NormalizedUserName = "mariana458",
                     PasswordHash = hasher.HashPassword(null, "mariana458*"),
                     EmailConfirmed = true
-
                 }
             ); ;
         }

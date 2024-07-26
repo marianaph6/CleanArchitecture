@@ -21,8 +21,6 @@ namespace CleanArchitecture.Application.UnitTests.Mocks
             var mockUnitOfWork = new Mock<UnitOfWork>(streamerDbContextFake);
 
             return mockUnitOfWork;
-
         }
     }
-
 }

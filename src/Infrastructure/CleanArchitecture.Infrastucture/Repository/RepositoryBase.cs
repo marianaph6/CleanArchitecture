@@ -18,7 +18,6 @@ namespace CleanArchitecture.Infrastucture.Repository
         public async Task<IReadOnlyList<T>> GetAllAsync()
         {
             return await _context.Set<T>().ToListAsync();
-
         }
 
         public async Task<IReadOnlyList<T>> GetAsync(Expression<Func<T, bool>> predicate)
@@ -42,9 +41,7 @@ namespace CleanArchitecture.Infrastucture.Repository
             if (orderBy != null)
                 return await orderBy(query).ToListAsync();
 
-
             return await query.ToListAsync();
-
         }
 
         public async Task<IReadOnlyList<T>> GetAsync(Expression<Func<T, bool>> predicate = null,
@@ -58,20 +55,17 @@ namespace CleanArchitecture.Infrastucture.Repository
 
             if (includes != null) query = includes.Aggregate(query, (current, include) => current.Include(include));
 
-            if(predicate != null) query = query.Where(predicate);
+            if (predicate != null) query = query.Where(predicate);
 
             if (orderBy != null)
-                return await orderBy(query).ToListAsync(); 
-            
-            
+                return await orderBy(query).ToListAsync();
+
             return await query.ToListAsync();
-
         }
-
 
         public virtual async Task<T> GetByIdAsync(int id)
         {
-           return await  _context.Set<T>().FindAsync(id);
+            return await _context.Set<T>().FindAsync(id);
         }
 
         public async Task<T> AddAsync(T entity)
@@ -87,7 +81,6 @@ namespace CleanArchitecture.Infrastucture.Repository
             _context.Entry(entity).State = EntityState.Modified;
             await _context.SaveChangesAsync();
             return entity;
-
         }
 
         public async Task DeleteAsync(T entity)

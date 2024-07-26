@@ -2,7 +2,7 @@
 
 namespace CleanArchitecture.Application.Feature.Directors.Commands.CreateDirector
 {
-    public class CreateCommandValidator: AbstractValidator<CreateDirectorCommand>
+    public class CreateCommandValidator : AbstractValidator<CreateDirectorCommand>
     {
         public CreateCommandValidator()
         {

@@ -25,8 +25,6 @@ namespace CleanArchitecture.Infrastucture
             services.AddTransient<IEmailService, EmailService>();
 
             return services;
-
-
         }
     }
 }

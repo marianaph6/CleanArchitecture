@@ -12,6 +12,7 @@ namespace CleanArchitecture.Application.Feature.Streamers.Commands.CreateStreame
     {
         //private readonly IStreamerRepository _streamerRepository;
         private readonly IMapper _mapper;
+
         private readonly IEmailService _emailService;
         private readonly ILogger<CreateStreamerCommandHandler> _logger;
         private readonly IUnitOfWork _unitOfWork;
@@ -56,14 +57,11 @@ namespace CleanArchitecture.Application.Feature.Streamers.Commands.CreateStreame
             try
             {
                 await _emailService.SendEmail(email);
-
             }
             catch (Exception ex)
             {
                 _logger.LogError($"Errores enviando el de email de {streamer.Id} {ex}");
             }
-
-
         }
     }
 }

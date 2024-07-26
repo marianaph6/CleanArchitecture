@@ -1,9 +1,6 @@
 ﻿using AutoFixture;
 using CleanArchitecture.Domain;
 using CleanArchitecture.Infrastucture.Persistence;
-using CleanArchitecture.Infrastucture.Repository;
-using Microsoft.EntityFrameworkCore;
-using Moq;
 
 namespace CleanArchitecture.Application.UnitTests.Mocks
 {
@@ -25,5 +22,4 @@ namespace CleanArchitecture.Application.UnitTests.Mocks
             streamerDbContextFake.SaveChanges();
         }
     }
-
 }

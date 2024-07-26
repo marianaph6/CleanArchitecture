@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using CleanArchitecture.Application.Contracts.Persistence;
 using CleanArchitecture.Application.Feature.Videos.Queries.GetVideosList;
 using CleanArchitecture.Application.Mappings;
 using CleanArchitecture.Application.UnitTests.Mocks;
@@ -30,7 +29,7 @@ namespace CleanArchitecture.Application.UnitTests.Features.Videos.Queries
         public async Task GetVideoListTest()
         {
             //Preparar Data
-            var handler = new GetVideosListQueryHandler(_unitOfWork.Object,_mapper);
+            var handler = new GetVideosListQueryHandler(_unitOfWork.Object, _mapper);
             var request = new GetVideosListQuery("System");
 
             //Ejecutar método a evaluar

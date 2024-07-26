@@ -16,13 +16,12 @@ namespace CleanArchitecture.Application.Behaviours
         {
             try
             {
-
                 return await next();
-
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 var requestName = typeof(TRequest).Name;
-                _logger.LogError(ex,"Application Request: Sucedió una excepción para el request {Name} {@Name}", requestName, request);
+                _logger.LogError(ex, "Application Request: Sucedió una excepción para el request {Name} {@Name}", requestName, request);
                 throw;
             }
         }

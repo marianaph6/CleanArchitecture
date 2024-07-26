@@ -1,20 +1,20 @@
-﻿
-using CleanArchitecture.Domain.Common;
+﻿using CleanArchitecture.Domain.Common;
 
 namespace CleanArchitecture.Domain
 {
     /// <summary>
     /// Actor Class
     /// </summary>
-    public class Actor: BaseDomainModel
+    public class Actor : BaseDomainModel
     {
         /// <summary>
         /// Se inicializa la coleccion de videos dentro de Actor
         /// </summary>
-        public Actor() 
+        public Actor()
         {
             Videos = new HashSet<Video>();
         }
+
         /// <summary>
         /// Nombre
         /// </summary>

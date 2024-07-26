@@ -8,7 +8,7 @@ namespace CleanArchitecture.Application.Feature.Videos.Queries.GetVideosList
 
         public GetVideosListQuery(string username)
         {
-            _userName = username ?? throw new ArgumentException(nameof(username)); 
+            _userName = username ?? throw new ArgumentException(nameof(username));
         }
     }
 }

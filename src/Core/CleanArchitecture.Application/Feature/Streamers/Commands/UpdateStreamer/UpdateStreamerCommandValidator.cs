@@ -1,13 +1,11 @@
 ﻿using FluentValidation;
 
-
 namespace CleanArchitecture.Application.Feature.Streamers.Commands.UpdateStreamer
 {
-    public class UpdateStreamerCommandValidator: AbstractValidator<UpdateStreamerCommand>
+    public class UpdateStreamerCommandValidator : AbstractValidator<UpdateStreamerCommand>
     {
         public UpdateStreamerCommandValidator()
         {
-
             RuleFor(p => p.Nombre)
                 .NotNull().WithMessage("{Nombre} no permite valores nulos");
 
